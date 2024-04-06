@@ -1,9 +1,13 @@
 import React from 'react';
-import './App.css';
+import GlobalStyles from './styles/GlobalStyles';
+import Layout from './components/layouts/Layout';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <p>Projeto com React</p>
+    <>
+    <GlobalStyles/>
+    <Layout/>
+    </>
   );
 }
 
