@@ -1,10 +1,32 @@
 import React from "react";
-import { Container } from './styles'
+
+import { useMemo } from 'react';
+import Toggle from '../Toggle'
+
+import {
+    Container,
+    Profile,
+    Welcome,
+    UserName
+} from './styles'
+
+import emojis from '../../../utils/emojis'
 
 const MainHeader: React.FC = () => {
+
+    const emoji = useMemo(() => {
+        const indice = Math.floor(Math.random() * emojis.length)
+        return emojis[indice];
+    }, [])
+
     return (
         <Container>
-            <h1>MainHeader</h1>
+            <Toggle/>
+
+            <Profile>
+                <Welcome>Olá, {emoji} </Welcome>
+                <UserName>Cauã Morales</UserName>
+            </Profile>
         </Container>
     )
 }
