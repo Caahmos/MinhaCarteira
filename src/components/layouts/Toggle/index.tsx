@@ -1,25 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
 
 import {
     Container,
     ToggleLabel,
     ToggleSelector
-} from './styles'
+} from './styles';
 
 const Toggle: React.FC = () => {
+    const [isChecked, setIsChecked] = useState(false);
 
     return (
         <Container>
             <ToggleLabel>Light</ToggleLabel>
             <ToggleSelector 
-                checked
+                checked={isChecked}
                 uncheckedIcon={false}
                 checkedIcon={false}
-                onChange={() => {}}
+                onChange={() => setIsChecked(!isChecked)}
             />
             <ToggleLabel>Dark</ToggleLabel>
         </Container>
-    )
-}
+    );
+};
 
-export default Toggle
+export default Toggle;
