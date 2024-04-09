@@ -23,5 +23,5 @@ export const TitleContainer = styled.h4`
 `;
 
 export const Controllers = styled.div`
-   
+    display: flex;
 `;
