@@ -5,12 +5,18 @@ import MainHeader from "../MainHeader";
 import Aside from "../Aside";
 import Content from "../Content";
 
-const Layout: React.FC = () => {
+interface ContentProps {
+    children: React.ReactNode;
+}
+
+const Layout: React.FC<ContentProps> = ({ children }) => {
     return (
         <Grid>
             <Aside />
             <MainHeader />
-            <Content />
+            <Content>
+                {children}
+            </Content>
         </Grid>
     )
 }
