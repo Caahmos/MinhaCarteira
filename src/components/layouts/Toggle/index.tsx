@@ -7,7 +7,7 @@ import {
 } from './styles';
 
 const Toggle: React.FC = () => {
-    const [isChecked, setIsChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(true);
 
     return (
         <Container>
