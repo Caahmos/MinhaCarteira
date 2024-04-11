@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
-interface IContainerProps {
-    color: string;
-}
-
 interface ITagProps {
     color: string;
 }
 
-export const Container = styled.li<IContainerProps>`
-    background-color: ${props => props.color};
+export const Container = styled.li`
+    background-color: ${props => props.theme.colors.tertiary};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,9 +18,9 @@ export const Container = styled.li<IContainerProps>`
     position: relative;
 
     &:hover{
-        transition: 0.4s all;
+        transition: 0.1s all;
         opacity: .7;
-        transform: translateX(10px);
+        transform: translateX(15px);
     }
 
     > div {

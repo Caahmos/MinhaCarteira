@@ -26,6 +26,11 @@ export const MenuContainer = styled.nav`
     display: flex;
     flex-direction: column;
     margin-top: 50px;
+
+    > a {
+        list-style: none;
+        text-decoration: none;
+    }
 `
 export const MenuItemLink = styled.a`
     color: ${props => props.theme.colors.info};

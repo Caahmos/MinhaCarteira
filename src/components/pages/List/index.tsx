@@ -4,34 +4,55 @@ import SelectInput from "../../layouts/SelectInput";
 
 import {
     Container,
-    Content
+    Content,
+    Filters
 } from './styles'
 import HistoryFinanceCard from "../../layouts/HistoryFinanceCard";
 
 const List: React.FC = () => {
-    const options = [
-        {value: 'Cauã', label: 'Cauã'},
-        {value: 'Alex', label: 'Alex' },
-        {value: 'Morales', label: 'Morales'},
+    const months = [
+        {value: 7, label: 'Julho'},
+        {value: 8, label: 'Agosto' },
+        {value: 9, label: 'Setembro'},
+    ]
+
+    const years = [
+        {value: 2020, label: 2024},
+        {value: 2019, label: 2023},
+        {value: 2018, label: 2022},
     ]
 
     return (
         <Container>
             <ContentHeader title="Lista">
-                <SelectInput options={options} />
+                <SelectInput options={months} />
+                <SelectInput options={years} />
             </ContentHeader>
 
+            <Filters>
+                <button 
+                type="button"
+                className="tag-filter tag-filter-recurrent">
+                    Recorrentes
+                </button>
+                <button 
+                type="button"
+                className="tag-filter tag-filter-eventual">
+                    Eventuais
+                </button>
+            </Filters>
+
             <Content>
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
-                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" cardColor="#313862" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
+                <HistoryFinanceCard title="Conta de Luz" subtitle="10/04/2024" amount="R$ 130,00" tagColor="#E44C4E" />
             </Content>
         </Container>
     )

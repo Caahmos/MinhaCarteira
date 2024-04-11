@@ -9,12 +9,14 @@ import {
 } from './styles'
 
 import logoImg from '../../assets/logo.svg'
-import { 
+import {
     MdDashboard,
     MdArrowDownward,
     MdArrowUpward,
     MdExitToApp
 } from "react-icons/md";
+
+import { Link } from 'react-router-dom';
 
 const Aside: React.FC = () => {
     return (
@@ -24,22 +26,30 @@ const Aside: React.FC = () => {
                 <Title>Minha Carteira</Title>
             </Header>
             <MenuContainer>
-                <MenuItemLink href="#">
-                    <MdDashboard/>
-                    Dashboard
-                </MenuItemLink>
-                <MenuItemLink href="#">
-                    <MdArrowUpward/>
-                    Entradas
-                </MenuItemLink>
-                <MenuItemLink href="#">
-                    <MdArrowDownward/>
-                    Saídas
-                </MenuItemLink>
-                <MenuItemLink href="#">
-                    <MdExitToApp/>
-                    Sair
-                </MenuItemLink>
+                <Link to='/dashboard'>
+                    <MenuItemLink>
+                        <MdDashboard />
+                        Dashboard
+                    </MenuItemLink>
+                </Link>
+                <Link to='/list/entry-balance'>
+                    <MenuItemLink>
+                        <MdArrowUpward />
+                        Entradas
+                    </MenuItemLink>
+                </Link>
+                <Link to='/list/exit-balance'>
+                    <MenuItemLink>
+                        <MdArrowDownward />
+                        Saídas
+                    </MenuItemLink>
+                </Link>
+                <Link to='/exit'>
+                    <MenuItemLink>
+                        <MdExitToApp />
+                        Sair
+                    </MenuItemLink>
+                </Link>
             </MenuContainer>
         </Container>
     )
