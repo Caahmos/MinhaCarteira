@@ -8,14 +8,15 @@ import {
 
 interface IContentHeaderProps {
     title: string;
+    lineColor: string;
     children: React.ReactNode;
 }
 
-const ContentHeader: React.FC<IContentHeaderProps> = ({ title, children}) => {
+const ContentHeader: React.FC<IContentHeaderProps> = ({ title, lineColor, children}) => {
 
     return (
         <Container>
-            <TitleContainer>
+            <TitleContainer lineColor={lineColor}>
                 <h1>{title}</h1>
             </TitleContainer>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import ContentHeader from "../../layouts/ContentHeader";
 import SelectInput from "../../layouts/SelectInput";
+import { useParams } from 'react-router-dom';
 
 import {
     Container,
@@ -10,6 +11,10 @@ import {
 import HistoryFinanceCard from "../../layouts/HistoryFinanceCard";
 
 const List: React.FC = () => {
+
+    const { type } = useParams();
+    const title = type === 'entry-balance' ? {lineColor: '#F7931B', title: 'Entradas'} : {lineColor: '#E44C4E', title: 'Saídas'};
+
     const months = [
         {value: 7, label: 'Julho'},
         {value: 8, label: 'Agosto' },
@@ -24,7 +29,7 @@ const List: React.FC = () => {
 
     return (
         <Container>
-            <ContentHeader title="Lista">
+            <ContentHeader title={title.title} lineColor={title.lineColor}>
                 <SelectInput options={months} />
                 <SelectInput options={years} />
             </ContentHeader>
