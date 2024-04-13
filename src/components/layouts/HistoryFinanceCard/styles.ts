@@ -33,7 +33,9 @@ export const Container = styled.li`
 
 export const Tag = styled.div<ITagProps>`
     width: 10px;
-    height: 60%;
+    height: 100%;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
     background-color: ${props => props.color};
     position: absolute;
     left: 0;
