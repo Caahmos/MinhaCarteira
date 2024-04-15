@@ -12,6 +12,8 @@ import {
     Filters
 } from './styles'
 import HistoryFinanceCard from "../../layouts/HistoryFinanceCard";
+import formatCurrency from "../../../utils/formatCurrency";
+import formatDate from "../../../utils/formateDate";
 
 interface IData {
     id: string;
@@ -25,6 +27,8 @@ interface IData {
 const List: React.FC = () => {
 
     const [data, setData] = useState<IData[]>([]);
+    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1))
+    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()))
 
     const { type } = useParams();
     const title = type === 'entry-balance' ? { lineColor: '#F7931B', title: 'Entradas' } : { lineColor: '#E44C4E', title: 'Saídas' };
@@ -34,6 +38,12 @@ const List: React.FC = () => {
     }, [type])
 
     const months = [
+        { value: 1, label: 'Janeiro' },
+        { value: 2, label: 'Fevereiro' },
+        { value: 3, label: 'Março' },
+        { value: 4, label: 'Abril' },
+        { value: 5, label: 'Maio' },
+        { value: 6, label: 'Junho' },
         { value: 7, label: 'Julho' },
         { value: 8, label: 'Agosto' },
         { value: 9, label: 'Setembro' },
@@ -47,27 +57,34 @@ const List: React.FC = () => {
 
     useEffect(() => {
 
-        const response = listData.map((item) => {
+        const responseFilted = listData.filter((item) => {
+            const itemData = new Date(item.date);
+            let itemMes = String(itemData.getMonth() + 1);
+            let itemAno = String(itemData.getFullYear());
+
+            return itemMes === monthSelected && itemAno === yearSelected
+        })
+
+        const response = responseFilted.map((item) => {
             return {
-                id: String(Math.random() * listData.length),
+                id: String(new Date().getTime()) + item.amount,
                 description: item.description,
-                amountFormated: item.amount,
+                amountFormated: formatCurrency(Number(item.amount)),
                 frequency: item.frequency,
-                dateFormated: item.date,
-                tagColor: item.frequency === 'eventual' ? '#E44C4E' : '#4E41F0' 
+                dateFormated: formatDate(item.date),
+                tagColor: item.frequency === 'eventual' ? '#E44C4E' : '#4E41F0'
             }
         })
 
         setData(response);
-        console.log(data);
     },
-        [type]);
+        [listData, type, monthSelected, yearSelected, data.length]);
 
     return (
         <Container>
             <ContentHeader title={title.title} lineColor={title.lineColor}>
-                <SelectInput options={months} />
-                <SelectInput options={years} />
+                <SelectInput options={months} onChange={(e) => { setMonthSelected(e.target.value) }} defaultValue={monthSelected} />
+                <SelectInput options={years} onChange={(e) => { setYearSelected(e.target.value) }} defaultValue={yearSelected} />
             </ContentHeader>
 
             <Filters>
