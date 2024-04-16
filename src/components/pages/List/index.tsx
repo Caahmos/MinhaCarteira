@@ -50,9 +50,9 @@ const List: React.FC = () => {
     ]
 
     const years = [
-        { value: 2020, label: 2024 },
-        { value: 2019, label: 2023 },
-        { value: 2018, label: 2022 },
+        { value: 2024, label: 2024 },
+        { value: 2023, label: 2023 },
+        { value: 2022, label: 2022 },
     ]
 
     useEffect(() => {

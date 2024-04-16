@@ -16,8 +16,6 @@ import {
     MdExitToApp
 } from "react-icons/md";
 
-import { Link } from 'react-router-dom';
-
 const Aside: React.FC = () => {
     return (
         <Container>
@@ -26,30 +24,22 @@ const Aside: React.FC = () => {
                 <Title>Minha Carteira</Title>
             </Header>
             <MenuContainer>
-                <Link to='/dashboard'>
-                    <MenuItemLink>
+                    <MenuItemLink to='/dashboard'>
                         <MdDashboard />
                         Dashboard
                     </MenuItemLink>
-                </Link>
-                <Link to='/list/entry-balance'>
-                    <MenuItemLink>
+                    <MenuItemLink to='/list/entry-balance'>
                         <MdArrowUpward />
                         Entradas
                     </MenuItemLink>
-                </Link>
-                <Link to='/list/exit-balance'>
-                    <MenuItemLink>
+                    <MenuItemLink to='/list/exit-balance'>
                         <MdArrowDownward />
                         Saídas
                     </MenuItemLink>
-                </Link>
-                <Link to='/exit'>
-                    <MenuItemLink>
+                    <MenuItemLink to='/exit'>
                         <MdExitToApp />
                         Sair
                     </MenuItemLink>
-                </Link>
             </MenuContainer>
         </Container>
     )
