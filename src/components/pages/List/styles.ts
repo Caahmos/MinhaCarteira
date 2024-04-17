@@ -22,6 +22,7 @@ export const Filters = styled.div`
         background-color: transparent;
         color: ${props => props.theme.colors.white};
         margin: 0 10px;
+        opacity: .5;
 
         &:hover{
             transition: 0.4s all;
@@ -29,7 +30,7 @@ export const Filters = styled.div`
         }
     }
 
-        .tag-filter-recurrent::after{
+        .tag-filter-eventual::after{
             content: '';
             display: block;
             width: 75px;
@@ -37,12 +38,16 @@ export const Filters = styled.div`
             border-bottom: 10px solid ${props => props.theme.colors.warning};
         }
 
-        .tag-filter-eventual::after{
+        .tag-filter-recurrent::after{
             content: '';
             display: block;
             width: 75px;
             margin: 0 auto;
             border-bottom: 10px solid ${props => props.theme.colors.success};
+        }
+
+        .tag-actived{
+            opacity: 1;
         }
 
 `;
