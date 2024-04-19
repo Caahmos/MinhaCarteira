@@ -12,6 +12,7 @@ import {
     Content,
     Filters
 } from './styles'
+
 import HistoryFinanceCard from "../../layouts/HistoryFinanceCard";
 import formatCurrency from "../../../utils/formatCurrency";
 import formatDate from "../../../utils/formateDate";
@@ -28,8 +29,8 @@ interface IData {
 const List: React.FC = () => {
 
     const [data, setData] = useState<IData[]>([]);
-    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1));
-    const [yearSelected, setYearSelected] = useState<string>(String(new Date().getFullYear()));
+    const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1);
+    const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear());
     const [selectedFrequency, setSelectedFrequency] = useState(['recorrente', 'eventual']);
 
     const { type } = useParams();
@@ -81,12 +82,31 @@ const List: React.FC = () => {
         }
     }
 
+    const handleMonthSelected = ( month: string ) => {
+        try{
+            const parseMonth = Number(month);
+            setMonthSelected(parseMonth);
+        }catch(error){
+            throw new Error('Valor do mês inválido! É aceito entre 0 - 24.');
+        };
+    };
+
+    const handleYearSelected = ( year: string ) => {
+        try{
+            const parseYear = Number(year);
+            setYearSelected(parseYear);
+        }catch(error){
+            throw new Error('Valor do ano inválido! É aceito somente números inteiros.');
+        };
+    };
+
+
     useEffect(() => {
 
         const responseFilted = listData.filter((item) => {
             const itemData = new Date(item.date);
-            let itemMes = String(itemData.getMonth() + 1);
-            let itemAno = String(itemData.getFullYear());
+            let itemMes = itemData.getMonth() + 1;
+            let itemAno = itemData.getFullYear();
 
             return itemMes === monthSelected && itemAno === yearSelected && selectedFrequency.includes(item.frequency)
         })
@@ -110,8 +130,8 @@ const List: React.FC = () => {
     return (
         <Container>
             <ContentHeader title={title.title} lineColor={title.lineColor}>
-                <SelectInput options={months} onChange={(e) => { setMonthSelected(e.target.value) }} defaultValue={monthSelected} />
-                <SelectInput options={years} onChange={(e) => { setYearSelected(e.target.value) }} defaultValue={yearSelected} />
+                <SelectInput options={months} onChange={(e) => { handleMonthSelected(e.target.value) }} defaultValue={monthSelected} />
+                <SelectInput options={years} onChange={(e) => { handleYearSelected(e.target.value) }} defaultValue={yearSelected} />
             </ContentHeader>
 
             <Filters>
