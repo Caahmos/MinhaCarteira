@@ -4,10 +4,13 @@ import { useState, useMemo } from 'react';
 import ContentHeader from "../../layouts/ContentHeader";
 import SelectInput from "../../layouts/SelectInput";
 import WalletBox from "../../layouts/WalletBox";
+import MessageBox from "../../layouts/MessageBox";
 
 import gains from "../../../data/gains";
 import expenses from "../../../data/expenses";
 import listOfMonths from '../../../utils/months';
+import happySvg from '../../assets/happy.svg'
+import sadSvg from '../../assets/sad.svg'
 
 import {
     Container,
@@ -75,6 +78,8 @@ const Dashboard: React.FC = () => {
                 <WalletBox title="Saldo" color="#4E41F0" amount={150.00} footerLabel="Atualizado com base nas entradas e saídas" icon="dolar" />
                 <WalletBox title="Entradas" color="#F7931B" amount={5000.00} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowUp" />
                 <WalletBox title="Saídas" color="#E44C4E" amount={4850.00} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowDown" />
+
+                <MessageBox title="Muito Bem!" description="Sua carteira está positiva!" footerText="Continue assim, considere investir o seu valor!" icon={happySvg} />
             </Content>
         </Container>
     )
