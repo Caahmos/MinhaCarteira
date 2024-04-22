@@ -5,6 +5,7 @@ import ContentHeader from "../../layouts/ContentHeader";
 import SelectInput from "../../layouts/SelectInput";
 import WalletBox from "../../layouts/WalletBox";
 import MessageBox from "../../layouts/MessageBox";
+import PieChart from "../../layouts/PieChart";
 
 import gains from "../../../data/gains";
 import expenses from "../../../data/expenses";
@@ -151,6 +152,7 @@ const Dashboard: React.FC = () => {
                 <WalletBox title="Saídas" color="#E44C4E" amount={totalExpenses} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowDown" />
 
                 <MessageBox title={message.title} description={message.description} footerText={message.footerText} icon={message.icon} />
+                <PieChart/>
             </Content>
         </Container>
     )
