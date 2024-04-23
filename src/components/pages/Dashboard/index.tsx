@@ -5,7 +5,7 @@ import ContentHeader from "../../layouts/ContentHeader";
 import SelectInput from "../../layouts/SelectInput";
 import WalletBox from "../../layouts/WalletBox";
 import MessageBox from "../../layouts/MessageBox";
-import PieChart from "../../layouts/PieChart";
+import PieChartBox from "../../layouts/PieChartBox";
 
 import gains from "../../../data/gains";
 import expenses from "../../../data/expenses";
@@ -59,10 +59,10 @@ const Dashboard: React.FC = () => {
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
 
-            if(month == monthSelected && year == yearSelected){
-                try{
+            if (month == monthSelected && year == yearSelected) {
+                try {
                     total += Number(item.amount);
-                }catch{
+                } catch {
                     throw new Error('Invalid amount!');
                 };
             };
@@ -79,10 +79,10 @@ const Dashboard: React.FC = () => {
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
 
-            if(month == monthSelected && year == yearSelected){
-                try{
+            if (month == monthSelected && year == yearSelected) {
+                try {
                     total += Number(item.amount);
-                }catch{
+                } catch {
                     throw new Error('Invalid amount!');
                 };
             };
@@ -96,7 +96,7 @@ const Dashboard: React.FC = () => {
     }, [totalGains, totalExpenses, yearSelected, monthSelected]);
 
     const message = useMemo(() => {
-        if(currentlyWallet < 0){
+        if (currentlyWallet < 0) {
             return {
                 title: 'Poxa, que pena!',
                 description: 'Neste mês você gastou mais do que deveria.',
@@ -104,7 +104,7 @@ const Dashboard: React.FC = () => {
                 icon: sadSvg
             }
         }
-        else if( currentlyWallet == 0){
+        else if (currentlyWallet == 0) {
             return {
                 title: 'Uffa!',
                 description: 'Neste mês você gastou exatamente o que ganhou!',
@@ -112,7 +112,7 @@ const Dashboard: React.FC = () => {
                 icon: happySvg
             }
         }
-        else{
+        else {
             return {
                 title: 'Muito Bem!',
                 description: 'Sua carteira está positiva!',
@@ -121,6 +121,28 @@ const Dashboard: React.FC = () => {
             }
         }
     }, [currentlyWallet])
+
+    const relationExpensesVersusGains = useMemo(() => {
+        const total: number = totalGains + totalExpenses;
+        const percentGains = (totalGains / total) * 100;
+        const percentExpenses = (totalExpenses / total) * 100;
+
+        return [
+            {
+                name: 'Entradas',
+                value: totalGains,
+                percent: Number(percentGains.toFixed(0)),
+                color: '#E44C4E'
+            },
+            {
+                name: 'Saídas',
+                value: totalExpenses,
+                percent: Number(percentExpenses.toFixed(0)),
+                color: '#F7931B'
+            },
+        ]
+
+    }, [totalGains, totalExpenses])
 
     const handleMonthSelected = (month: string) => {
         try {
@@ -152,7 +174,7 @@ const Dashboard: React.FC = () => {
                 <WalletBox title="Saídas" color="#E44C4E" amount={totalExpenses} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowDown" />
 
                 <MessageBox title={message.title} description={message.description} footerText={message.footerText} icon={message.icon} />
-                <PieChart/>
+                <PieChartBox data={relationExpensesVersusGains} />
             </Content>
         </Container>
     )

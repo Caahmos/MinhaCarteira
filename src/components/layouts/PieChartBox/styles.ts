@@ -51,5 +51,7 @@ export const Legend = styled.li<ILegendProps>`
     }
 `
 export const SideRigth = styled.main`
-
+    display: flex;
+    flex: 1;
+    justify-content: center;
 `
