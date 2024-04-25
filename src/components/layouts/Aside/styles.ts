@@ -13,6 +13,7 @@ export const Header = styled.header`
     height: 80px;
     display: flex;
     align-items: center;
+    color: ${props => props.theme.colors.white};
 `
 
 export const Title = styled.h3`

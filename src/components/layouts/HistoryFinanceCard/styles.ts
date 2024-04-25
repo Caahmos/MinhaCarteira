@@ -6,6 +6,7 @@ interface ITagProps {
 
 export const Container = styled.li`
     background-color: ${props => props.theme.colors.tertiary};
+    color: ${props => props.theme.colors.white};
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -9,7 +9,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    color: ${props => props.theme.colors.white};
 `;
 
 export const TitleContainer = styled.h1<ITitleContainerProps>`
