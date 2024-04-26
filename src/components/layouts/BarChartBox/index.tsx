@@ -1,5 +1,7 @@
 import React from 'react'
 import CountUp from 'react-countup';
+import formatCurrency from '../../../utils/formatCurrency';
+
 import {
     ResponsiveContainer,
     BarChart,
@@ -36,7 +38,7 @@ const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
                     {
                         data.map(legend => (
                             <Legend color={legend.color} key={legend.name}>
-                                <div><CountUp end={legend.amount} />%</div>
+                                <div><CountUp end={legend.percent} />%</div>
                                 <span>{legend.name}</span>
                             </Legend>
                         ))
@@ -47,6 +49,7 @@ const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
             <SideRigth>
                 <ResponsiveContainer>
                     <BarChart data={data}>
+                        <Tooltip formatter={ (prev) => { return formatCurrency(Number(prev)) }} />
                         <Bar dataKey="amount">
                             {
                                 data.map((indicator) => (
