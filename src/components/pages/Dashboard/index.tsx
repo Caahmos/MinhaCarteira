@@ -61,7 +61,7 @@ const Dashboard: React.FC = () => {
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
 
-            if (month == monthSelected && year == yearSelected) {
+            if (month === monthSelected && year === yearSelected) {
                 try {
                     total += Number(item.amount);
                 } catch {
@@ -81,7 +81,7 @@ const Dashboard: React.FC = () => {
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
 
-            if (month == monthSelected && year == yearSelected) {
+            if (month === monthSelected && year === yearSelected) {
                 try {
                     total += Number(item.amount);
                 } catch {
@@ -95,7 +95,7 @@ const Dashboard: React.FC = () => {
 
     const currentlyWallet = useMemo(() => {
         return totalGains - totalExpenses;
-    }, [totalGains, totalExpenses, yearSelected, monthSelected]);
+    }, [totalGains, totalExpenses]);
 
     const message = useMemo(() => {
         if (currentlyWallet < 0) {
@@ -106,7 +106,15 @@ const Dashboard: React.FC = () => {
                 icon: sadSvg
             }
         }
-        else if (currentlyWallet == 0) {
+        else if (totalGains === 0 && totalExpenses === 0) {
+            return {
+                title: 'Ooops!',
+                description: 'Neste mês não há registros!',
+                footerText: 'Não se esqueça de manter o app atualizado para você não se perder nas finanças.',
+                icon: sadSvg
+            }
+        }
+        else if (currentlyWallet === 0) {
             return {
                 title: 'Uffa!',
                 description: 'Neste mês você gastou exatamente o que ganhou!',
@@ -122,7 +130,7 @@ const Dashboard: React.FC = () => {
                 icon: happySvg
             }
         }
-    }, [currentlyWallet])
+    }, [currentlyWallet, totalGains, totalExpenses])
 
     const relationExpensesVersusGains = useMemo(() => {
         const total: number = totalGains + totalExpenses;
@@ -167,18 +175,20 @@ const Dashboard: React.FC = () => {
             });
 
         const total = amountEventual + amountRecurrent;
+        const recurrentPercent = Number(((amountRecurrent / total) * 100).toFixed(1));
+        const eventualPercent = Number(((amountEventual / total) * 100).toFixed(1));
 
         return [
             {
                 name: 'Recorrentes',
                 amount: amountRecurrent,
-                percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+                percent: recurrentPercent ? recurrentPercent : 0,
                 color: "#F7931B"
             },
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(((amountEventual / total) * 100).toFixed(1)),
+                percent: eventualPercent ? eventualPercent : 0,
                 color: "#E44C4E"
             }
         ]
@@ -205,18 +215,20 @@ const Dashboard: React.FC = () => {
             });
 
         const total = amountEventual + amountRecurrent;
+        const recurrentPercent = Number(((amountRecurrent / total) * 100).toFixed(1));
+        const eventualPercent = Number(((amountEventual / total) * 100).toFixed(1));
 
         return [
             {
                 name: 'Recorrentes',
                 amount: amountRecurrent,
-                percent: Number(((amountRecurrent / total) * 100).toFixed(1)),
+                percent: recurrentPercent ? recurrentPercent : 0,
                 color: "#F7931B"
             },
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(((amountEventual / total) * 100).toFixed(1)),
+                percent: eventualPercent ? eventualPercent : 0,
                 color: "#E44C4E"
             }
         ]
