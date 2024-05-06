@@ -5,11 +5,11 @@ export const Container = styled.div`
         padding: 7px 10px;
         margin-right: 20px;
         border-radius: 5px;
-        color: ${props => props.theme.colors.black};
+        color: #000;
     }
 
     > select > option {
-        color: ${props => props.theme.colors.black};
+        color: #000;
     }
 
 `

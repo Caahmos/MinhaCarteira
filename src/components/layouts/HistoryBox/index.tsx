@@ -30,7 +30,6 @@ interface IHistoryBoxProps {
 
 
 const HistoryBox: React.FC<IHistoryBoxProps> = ({ data, lineColorAmountEntry, lineColorAmountOutput }) => {
-    console.log(data)
     return (
         <Container>
             <h2>Historico de Saldo</h2>
