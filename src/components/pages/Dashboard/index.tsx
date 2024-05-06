@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 
 import ContentHeader from "../../layouts/ContentHeader";
 import SelectInput from "../../layouts/SelectInput";
@@ -282,23 +282,23 @@ const Dashboard: React.FC = () => {
             });
     }, [yearSelected]);
 
-    const handleMonthSelected = (month: string) => {
+    const handleMonthSelected = useCallback((month: string) => {
         try {
             const parseMonth = Number(month);
             setMonthSelected(parseMonth);
         } catch (error) {
             throw new Error('Valor do mês inválido! É aceito entre 0 - 24.');
         };
-    };
+    }, []);
 
-    const handleYearSelected = (year: string) => {
+    const handleYearSelected = useCallback((year: string) => {
         try {
             const parseYear = Number(year);
             setYearSelected(parseYear);
         } catch (error) {
             throw new Error('Valor do ano inválido! É aceito somente números inteiros.');
         };
-    };
+    }, []);
 
     return (
         <Container>
