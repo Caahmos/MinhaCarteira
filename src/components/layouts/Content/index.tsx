@@ -13,4 +13,4 @@ const Content: React.FC<ContentProps> = ({ children }) => {
     )
 }
 
-export default Content
+export default Content;

@@ -3,15 +3,18 @@ import GlobalStyles from './styles/GlobalStyles';
 import { useTheme } from './hooks/theme';
 import { ThemeProvider } from 'styled-components';
 import Routes from './routes';
+import { AuthProvider } from './hooks/auth';
 
 
 const App: React.FC = () => {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

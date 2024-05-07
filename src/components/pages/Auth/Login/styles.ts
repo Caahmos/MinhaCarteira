@@ -27,7 +27,7 @@ export const Logo = styled.div`
     }
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
     width: 300px;
     height: 300px;
 
@@ -41,6 +41,7 @@ export const Form = styled.div`
 
 export const FormTitle = styled.h2`
     color: ${props => props.theme.colors.white};
+    margin-bottom: 30px;
     &:after{
         content: '';
         display: block;
