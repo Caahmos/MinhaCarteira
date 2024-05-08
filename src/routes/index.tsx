@@ -8,15 +8,13 @@ const Routes: React.FC = () => {
     const { logged } = useAuth();
     console.log(logged);
     return (
-        <Router>
-            
-                {
-                    logged 
-                    ? <AppRoutes /> 
+        <>
+            {
+                logged
+                    ? <AppRoutes />
                     : <AuthRoutes />
-                }
-           
-        </Router>
+            }
+        </>
     )
 }
 

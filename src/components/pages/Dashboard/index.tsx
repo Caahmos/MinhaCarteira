@@ -308,8 +308,8 @@ const Dashboard: React.FC = () => {
             </ContentHeader>
             <Content>
                 <WalletBox title="Saldo" color="#4E41F0" amount={currentlyWallet} footerLabel="Atualizado com base nas entradas e saídas" icon="dolar" />
-                <WalletBox title="Entradas" color="#F7931B" amount={totalGains} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowUp" />
-                <WalletBox title="Saídas" color="#E44C4E" amount={totalExpenses} footerLabel="Atualizado com base nas entradas e saídas" icon="arrowDown" />
+                <WalletBox title="Entradas" color="#F7931B" amount={totalGains} footerLabel="Confira o total de entradas." icon="arrowUp" />
+                <WalletBox title="Saídas" color="#E44C4E" amount={totalExpenses} footerLabel="Confira o total de saídas." icon="arrowDown" />
 
                 <MessageBox title={message.title} description={message.description} footerText={message.footerText} icon={message.icon} />
                 <PieChartBox data={relationExpensesVersusGains} />
