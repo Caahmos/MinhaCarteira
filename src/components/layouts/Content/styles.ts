@@ -22,4 +22,8 @@ export const Container = styled.div`
         border-radius: 1px;
     }
 
+    @media screen and (max-width: 770px){
+        padding: 20px;
+    }
+
 `

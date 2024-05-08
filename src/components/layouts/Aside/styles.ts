@@ -7,6 +7,10 @@ export const Container = styled.div`
     padding-left: 20px;
     border-right: 1px solid ${props => props.theme.colors.white};
 
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+
 `
 
 export const Header = styled.header`

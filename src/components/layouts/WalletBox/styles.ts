@@ -35,4 +35,30 @@ export const Container = styled.div<IContentProps>`
         bottom: 10px;
     }
 
+    @media(max-width: 770px){
+        width: 100%;
+        
+        > span {
+            font-size: 14px;
+        }
+
+        > h1 {
+            word-wrap: break-word;
+            font-size: 20px;
+        }
+    }
+    
+    @media(max-width: 420px){
+        width: 100%;
+
+        > span {
+            font: 18px;
+        }
+
+        > h1 {
+            word-wrap: break-word;
+            font-size: 26px;
+        }
+    }
+
 `
