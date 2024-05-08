@@ -41,7 +41,7 @@ export const LegendContainer = styled.ul`
 
     @media screen and (max-width: 1200px) {
         display: flex;
-
+        justify-content: center;
         height: auto;
     }
 `
@@ -83,7 +83,8 @@ export const SideRigth = styled.main`
     justify-content: center;
 
     @media screen and (max-width: 1200px) {
-        height: 200px;
         width: 100%;
+        min-height: 200px;
+        flex-grow: 1;
     }
 `

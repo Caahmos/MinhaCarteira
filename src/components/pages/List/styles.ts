@@ -6,8 +6,9 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.main`
-
-
+    > p {
+        color: ${props => props.theme.colors.white}
+    };
 `;
 
 export const Filters = styled.div`

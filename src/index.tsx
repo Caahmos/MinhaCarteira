@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import { ThemeProvider } from './hooks/theme'
+import { ThemeProvider } from './hooks/theme';
+import { MenuProvider } from './hooks/openMenu';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <MenuProvider>
+        <App />
+      </MenuProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

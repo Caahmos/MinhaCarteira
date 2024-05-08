@@ -1,21 +1,26 @@
 import React from "react";
 
 import { useMemo, useState } from 'react';
-import Toggle from '../Toggle';
 import { useTheme } from '../../../hooks/theme'
 
 import {
     Container,
     Profile,
     Welcome,
-    UserName
+    UserName,
+    Toggle,
+    MenuHamburguer,
+    ToggleView
 } from './styles'
 
 import emojis from '../../../utils/emojis'
+import { useMenu } from '../../../hooks/openMenu'
+
 
 const MainHeader: React.FC = () => {
     const { toggleTheme, theme } = useTheme();
     const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false);
+    const { open } = useMenu();
 
     const emoji = useMemo(() => {
         const indice = Math.floor(Math.random() * emojis.length)
@@ -30,12 +35,15 @@ const MainHeader: React.FC = () => {
 
     return (
         <Container>
-            <Toggle
-                labelLeft='Claro'
-                labelRight='Escuro'
-                checked={darkTheme}
-                onChange={ handleChangeTheme }
-            />
+            <MenuHamburguer onClick={() => { open() }} />
+            <ToggleView>
+                <Toggle
+                    labelLeft='Claro'
+                    labelRight='Escuro'
+                    checked={darkTheme}
+                    onChange={handleChangeTheme}
+                />
+            </ToggleView>
 
             <Profile>
                 <Welcome>Olá, {emoji} </Welcome>
