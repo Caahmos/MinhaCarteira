@@ -51,3 +51,25 @@ export const MenuItemLink = styled(Link)`
         margin-right: 5px;
     }
 `
+
+export const MenuItemButton = styled.button`
+    font-size: 16px;
+    color: ${props => props.theme.colors.info};
+
+    margin: 7px 0;
+    transition: 0.4s;
+    border: none;
+    background: none;
+
+    display: flex;
+    align-items: center;
+
+    &:hover{
+        opacity: .7;
+    }
+
+    > svg {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+`
