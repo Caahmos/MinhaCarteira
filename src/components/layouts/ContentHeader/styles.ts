@@ -24,6 +24,10 @@ export const TitleContainer = styled.h1<ITitleContainerProps>`
             border-top: 3px solid ${props => props.$lineColor};
         }
     }
+
+    @media screen and (max-width: 576px){
+        font-size: 1.3rem;
+    }
 `;
 
 export const Controllers = styled.div`

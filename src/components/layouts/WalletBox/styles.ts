@@ -1,8 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 interface IContentProps {
     color: string;
 }
+
+const animate = keyframes`
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    50%{
+        opacity: .3;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+`;
 
 export const Container = styled.div<IContentProps>`
     width: 32%;
@@ -14,6 +28,8 @@ export const Container = styled.div<IContentProps>`
     padding: 10px 20px;
     position: relative;
     overflow: hidden;
+
+    animation: ${animate} .5s;
 
     > img {
         height: 110%;
